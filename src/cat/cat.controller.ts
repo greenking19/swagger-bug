@@ -7,6 +7,8 @@ import {
   Param,
   Delete,
 } from '@nestjs/common';
+import { ApiPaginatedResponse } from 'src/decorators/apiPaginatedResponse';
+import { CatDto } from 'src/dto/cat.dto';
 import { CatService } from './cat.service';
 import { CreateCatDto } from './dto/create-cat.dto';
 import { UpdateCatDto } from './dto/update-cat.dto';
@@ -32,6 +34,7 @@ export class CatController {
   }
 
   @Patch(':id')
+  @ApiPaginatedResponse(CatDto)
   update(@Param('id') id: string, @Body() updateCatDto: UpdateCatDto) {
     return this.catService.update(+id, updateCatDto);
   }

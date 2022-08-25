@@ -1,4 +1,5 @@
 import { Injectable } from '@nestjs/common';
+import { CatDto } from 'src/dto/cat.dto';
 import { CreateCatDto } from './dto/create-cat.dto';
 import { UpdateCatDto } from './dto/update-cat.dto';
 
@@ -16,8 +17,12 @@ export class CatService {
     return `This action returns a #${id} cat`;
   }
 
-  update(id: number, updateCatDto: UpdateCatDto) {
-    return `This action updates a #${id} cat`;
+  async update(id: number, updateCatDto: UpdateCatDto): Promise<CatDto> {
+    return {
+      name: '1',
+      age: 8,
+      breed: 'something',
+    };
   }
 
   remove(id: number) {
